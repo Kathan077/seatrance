@@ -1,0 +1,459 @@
+.hero {
+  position: relative;
+  height: 72vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 24px 125px 24px;
+  overflow: hidden;
+  background-color: var(--brand-navy-dark);
+}
+
+.slideImage {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 0;
+  pointer-events: none; /* Inactive slides don't block clicks */
+}
+
+.activeSlide {
+  opacity: 1;
+  transform: scale(1.05); /* Slow Ken Burns zoom-in */
+  z-index: 2; /* Bring active slide above other inactive slides */
+  pointer-events: auto; /* Active slide captures hover/clicks */
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(6, 17, 32, 0.3) 0%,
+    rgba(6, 17, 32, 0.75) 100%
+  );
+  z-index: 1;
+  pointer-events: none; /* Crucial so arrow and dot clicks pass through to controls */
+}
+
+/* Slide Specific Layout Container */
+.slideContainer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 100px 80px 125px 80px; /* Shift content slightly up */
+  display: flex;
+  align-items: center; /* Centered vertically */
+  justify-content: flex-start; /* Align content to the left */
+  box-sizing: border-box;
+  z-index: 3; /* Placed above the heroOverlay */
+  pointer-events: none;
+}
+
+/* Slide content container */
+.contentContainer {
+  max-width: 650px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Left alignment for internal text/buttons */
+  text-align: left;
+  pointer-events: auto;
+}
+
+/* Typography & Taglines */
+.tagline {
+  font-size: 12px;
+  font-weight: 800;
+  color: #38bdf8; /* Accent light blue */
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: inline-block;
+  text-shadow: 0 2px 4px rgba(6, 17, 32, 0.4);
+}
+
+.title {
+  font-size: 60px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin-bottom: 18px;
+  text-shadow: 0 4px 20px rgba(6, 17, 32, 0.7);
+  font-family: var(--font-sans);
+}
+
+.highlight {
+  color: #38bdf8; /* Solid theme electric blue accent */
+  text-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+}
+
+.description {
+  font-size: 18.5px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  max-width: 580px;
+  margin-bottom: 32px;
+  text-shadow: 0 2px 10px rgba(6, 17, 32, 0.6);
+  font-family: var(--font-sans);
+}
+
+/* Action Button Groups */
+.btnGroup {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-blue-hover) 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 16px 32px;
+  border-radius: 50px; /* Pill design for premium feel */
+  box-shadow: 0 4px 20px rgba(30, 101, 179, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid transparent;
+}
+
+.btnPrimary:hover {
+  background: linear-gradient(135deg, var(--brand-blue-hover) 0%, var(--brand-navy) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(12, 35, 64, 0.6);
+}
+
+.btnIcon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.btnPrimary:hover .btnIcon {
+  transform: translateX(4px);
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 16px 32px;
+  border-radius: 50px; /* Matches primary pill design */
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btnSecondary:hover {
+  background: #ffffff;
+  color: var(--brand-navy);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Slide Content Entry Animations --- */
+.contentContainer .tagline,
+.contentContainer .title,
+.contentContainer .description,
+.contentContainer .btnGroup {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contentContainer .tagline { transition-delay: 0.15s; }
+.contentContainer .title { transition-delay: 0.3s; }
+.contentContainer .description { transition-delay: 0.45s; }
+.contentContainer .btnGroup { transition-delay: 0.6s; }
+
+.activeSlide .contentContainer .tagline,
+.activeSlide .contentContainer .title,
+.activeSlide .contentContainer .description,
+.activeSlide .contentContainer .btnGroup {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slider Arrow Controls */
+.sliderArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.sliderArrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.prevArrow {
+  left: 32px;
+}
+
+.nextArrow {
+  right: 32px;
+}
+
+.arrowIcon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Modern Flow Step Navigation Panel */
+.flowNav {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width);
+  padding: 0 80px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.flowNavItem {
+  background: rgba(6, 17, 32, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 18px 24px;
+  border-radius: 14px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.flowNavItem:hover {
+  background: rgba(6, 17, 32, 0.75);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.activeFlowNavItem {
+  background: rgba(6, 17, 32, 0.85);
+  border-color: var(--brand-blue);
+  box-shadow: 0 8px 30px rgba(6, 17, 32, 0.5), 0 0 0 1px rgba(30, 101, 179, 0.3);
+}
+
+.flowStepNum {
+  font-size: 32px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.15);
+  font-family: var(--font-sans);
+  transition: color 0.3s ease;
+  line-height: 1;
+}
+
+.activeFlowNavItem .flowStepNum {
+  color: #38bdf8;
+  text-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+.flowStepContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.flowStepLabel {
+  font-size: 9px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.flowStepTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.activeFlowNavItem .flowStepTitle {
+  color: #ffffff;
+}
+
+/* Progress indicator */
+.progressTrack {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.progressBar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--brand-blue) 0%, #38bdf8 100%);
+  transition: width 0.3s ease;
+}
+
+.activeFlowNavItem .progressBar {
+  width: 100%;
+  animation: fillProgress linear forwards;
+}
+
+@keyframes fillProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Responsive Overrides */
+@media (max-width: 1200px) {
+  .flowNav {
+    padding: 0 40px;
+    gap: 12px;
+  }
+  .flowNavItem {
+    padding: 14px 18px;
+    gap: 12px;
+  }
+  .flowStepNum {
+    font-size: 26px;
+  }
+  .flowStepTitle {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero {
+    height: 74vh;
+    min-height: 620px;
+    padding-bottom: 220px; /* Added more space for stacked flowNav */
+  }
+
+  .slideContainer {
+    padding: 120px 40px 220px 40px;
+  }
+  
+  .title {
+    font-size: 48px;
+    letter-spacing: -1.5px;
+  }
+
+  .description {
+    font-size: 17px;
+    max-width: 600px;
+  }
+
+  .flowNav {
+    grid-template-columns: repeat(2, 1fr);
+    bottom: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 64vh;
+    min-height: 500px;
+    padding-bottom: 130px;
+  }
+
+  .slideContainer {
+    padding: 110px 24px 130px 24px;
+  }
+
+  .title {
+    font-size: 36px;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    font-size: 15px;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .btnGroup {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .btnPrimary, .btnSecondary {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+
+  .sliderArrow {
+    width: 44px;
+    height: 44px;
+    display: none; /* Hide arrows on mobile to reduce clutter, relying on tabs */
+  }
+
+  .arrowIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .flowNav {
+    padding: 0 24px;
+    grid-template-columns: repeat(4, 1fr); /* Back to 4 columns but minimal */
+    gap: 8px;
+    bottom: 20px;
+  }
+
+  .flowStepContent {
+    display: none; /* Hide labels/titles on mobile to save space */
+  }
+
+  .flowNavItem {
+    padding: 10px;
+    justify-content: center;
+    gap: 0;
+    border-radius: 8px;
+  }
+
+  .flowStepNum {
+    font-size: 18px;
+  }
+}

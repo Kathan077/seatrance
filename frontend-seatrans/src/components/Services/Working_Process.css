@@ -1,0 +1,313 @@
+.processSection {
+  background: linear-gradient(180deg, #edf9fa 0%, #e3f5f8 100%); /* Matched to the soft cyan backdrop of your image */
+  padding: 100px 0 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.processContainer {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+}
+
+.processHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.processBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 13px;
+  font-weight: 750;
+  color: var(--brand-blue, #1e65b3);
+  background: rgba(30, 101, 179, 0.08);
+  border: 1.5px solid rgba(30, 101, 179, 0.25);
+  border-radius: 50px;
+  padding: 6px 18px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.badgeStar {
+  color: var(--brand-blue, #1e65b3);
+  font-weight: bold;
+}
+
+.processTitle {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: clamp(26px, 3.5vw, 42px);
+  font-weight: 850;
+  color: var(--brand-navy, #0c2340);
+  max-width: 720px;
+  line-height: 1.25;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* absolute positioning wrapper to coordinate SVG pathways and cards perfectly */
+.processWrapper {
+  position: relative;
+  max-width: 1100px;
+  margin: 60px auto 0 auto;
+  height: 440px; /* Fixed height on desktop to anchor SVG nodes */
+}
+
+/* Floating Elements style */
+.floatingIllust {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  color: rgba(30, 101, 179, 0.1); /* Soft watermark style */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.leftFloat {
+  left: -90px;
+  top: 40px;
+  animation: floatLeft 6s ease-in-out infinite;
+}
+
+.rightFloat {
+  right: -90px;
+  top: 40px;
+  animation: floatRight 7s ease-in-out infinite;
+}
+
+@keyframes floatLeft {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(-4deg); }
+}
+
+@keyframes floatRight {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+/* SVG Connection Lines */
+.svgConnections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.connectionSvg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Curved Steps Arc Grid absolute sync */
+.stepsArcContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  z-index: 2;
+}
+
+/* Wave alignment offset */
+.stepLeft {
+  margin-top: 90px;
+}
+
+.stepMiddle {
+  margin-top: 0px;
+}
+
+.stepRight {
+  margin-top: 90px;
+}
+
+.stepArcCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+/* Circle Icon Wrapper */
+.arcIconWrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+.arcIconBg {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(30, 101, 179, 0.05); /* Soft blue theme circle background */
+  border: 1.5px solid rgba(30, 101, 179, 0.08);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+.arcIcon {
+  color: var(--brand-blue, #1e65b3);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+.arcIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Hover States: Uniform float up */
+.stepArcCard:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+.stepArcCard:hover .arcIconBg {
+  background: var(--brand-blue, #1e65b3);
+  border-color: var(--brand-blue, #1e65b3);
+  box-shadow: 0 10px 25px rgba(30, 101, 179, 0.35);
+  transform: scale(1.05);
+}
+
+.stepArcCard:hover .arcIcon {
+  color: #ffffff;
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Titles and Descs */
+.arcStepTitle {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 23px;
+  font-weight: 850;
+  color: var(--brand-navy, #0c2340);
+  margin: 15px 0 12px 0;
+  transition: color 0.3s ease;
+}
+
+.stepArcCard:hover .arcStepTitle {
+  color: var(--brand-blue, #1e65b3);
+}
+
+.arcStepDesc {
+  font-family: var(--font-inter, 'Inter', sans-serif);
+  font-size: 14px;
+  color: #5b6f85;
+  line-height: 1.6;
+  max-width: 290px;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+/* Marquee Infinite Ticker Ribbon - Relative flow positioning */
+.processTickerContainer {
+  width: 100%;
+  background: var(--brand-blue, #1e65b3);
+  padding: 22px 0;
+  overflow: hidden;
+  position: relative;
+  margin-top: 40px; /* Natural spacing after cards wrapper */
+  transform: skewY(-1.2deg); /* High-end skewed visual */
+  box-shadow: 0 8px 30px rgba(12, 35, 64, 0.15);
+  z-index: 5;
+}
+
+.processTicker {
+  display: flex;
+  white-space: nowrap;
+}
+
+.tickerGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 100%;
+  animation: marquee 28s linear infinite;
+  gap: 60px;
+}
+
+.tickerGroup span {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: clamp(14px, 1.8vw, 19px);
+  font-weight: 850;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .processWrapper {
+    height: auto; /* Reset fixed height on tablet/mobile */
+    margin: 40px auto 0 auto;
+    padding-bottom: 40px;
+  }
+  .svgConnections {
+    display: none; /* Hide curve svg when grid collapses vertically */
+  }
+  .floatingIllust {
+    display: none;
+  }
+  .stepsArcContainer {
+    position: relative;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    max-width: 450px;
+    margin: 0 auto;
+    height: auto;
+  }
+  /* Remove wave margins on mobile */
+  .stepLeft, .stepMiddle, .stepRight {
+    margin-top: 0 !important;
+  }
+  .stepArcCard:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+  }
+  .processTickerContainer {
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .processSection {
+    padding: 60px 0 0 0;
+  }
+  .processContainer {
+    padding: 0 24px;
+  }
+  .processHeader {
+    margin-bottom: 25px;
+  }
+  .processTickerContainer {
+    padding: 16px 0;
+  }
+}
