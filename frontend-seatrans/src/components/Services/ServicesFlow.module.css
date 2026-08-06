@@ -1,0 +1,491 @@
+.flowSection {
+  padding: 110px 0;
+  background-color: #ffffff;
+  position: relative;
+  border-top: 1px solid #e2e8f0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 48px auto;
+}
+
+.badgeWrapper {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  background: rgba(30, 101, 179, 0.08);
+  color: #1e65b3;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 800;
+  color: #0c2340;
+  line-height: 1.18;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #64748b;
+  line-height: 1.65;
+}
+
+/* Step Pills */
+.stepPillsRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.stepPill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.stepPill:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0c2340;
+}
+
+.stepPill.activePill {
+  background: #0c2340;
+  color: #ffffff;
+  border-color: #0c2340;
+  box-shadow: 0 4px 16px rgba(12, 35, 64, 0.2);
+}
+
+.pillNum {
+  font-size: 11px;
+  font-weight: 800;
+  background: rgba(0, 0, 0, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.activePill .pillNum {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Spotlight Highlight Box */
+.stageHighlightCard {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  border: 1px solid #e2e8f0;
+  border-left: 5px solid #1e65b3;
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 48px;
+  box-shadow: 0 10px 30px rgba(12, 35, 64, 0.05);
+}
+
+.stageTopRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.stageLeftHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stageIconBox {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0c2340 0%, #1e65b3 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stageIconBox svg {
+  width: 24px;
+  height: 24px;
+}
+
+.stagePhaseLabel {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #1e65b3;
+}
+
+.stageTitle {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 24px;
+  font-weight: 800;
+  color: #0c2340;
+  margin-top: 2px;
+}
+
+.stageBadge {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #059669;
+  background: rgba(5, 150, 105, 0.08);
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(5, 150, 105, 0.18);
+}
+
+.stageDesc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #475569;
+}
+
+/* 6-Step Grid */
+.flowGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+.flowCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 28px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flowCard:hover {
+  transform: translateY(-6px);
+  border-color: #1e65b3;
+  box-shadow: 0 15px 35px rgba(12, 35, 64, 0.08);
+}
+
+.cardActive {
+  border-color: #1e65b3;
+  background: #f8fafc;
+  box-shadow: 0 0 20px rgba(30, 101, 179, 0.12);
+}
+
+.flowCardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.stepCircle {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(30, 101, 179, 0.08);
+  color: #1e65b3;
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 15px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.miniIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  color: #0c2340;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.miniIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.flowCardTitle {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 19px;
+  font-weight: 800;
+  color: #0c2340;
+  margin-bottom: 8px;
+}
+
+.flowCardDesc {
+  font-size: 13.5px;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.flowCardFooter {
+  padding-top: 14px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.footerBadge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1e65b3;
+  background: rgba(30, 101, 179, 0.08);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 992px) {
+  .flowGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .flowSection {
+    padding: 72px 0;
+  }
+  .stageTopRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .flowGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .stageHighlightCard {
+    padding: 24px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .stepPillsRow {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flowSection {
+    padding: 56px 0;
+  }
+  .container {
+    padding: 0 16px;
+  }
+  .header {
+    margin-bottom: 32px;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .subtitle {
+    font-size: 14.5px;
+  }
+  .stageHighlightCard {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+  .stageTitle {
+    font-size: 20px;
+  }
+  .stageDesc {
+    font-size: 14px;
+  }
+  .flowCard {
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+  .flowCardTitle {
+    font-size: 17px;
+  }
+  .flowCardDesc {
+    font-size: 13px;
+  }
+  .stepPill {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+  .badgeWrapper {
+    font-size: 10.5px;
+    padding: 4px 12px;
+  }
+}
+
+/* 425px */
+@media (max-width: 425px) {
+  .flowSection {
+    padding: 48px 0;
+  }
+  .container {
+    padding: 0 14px;
+  }
+  .title {
+    font-size: 22px;
+    letter-spacing: -0.3px;
+  }
+  .stageHighlightCard {
+    padding: 18px 14px;
+  }
+  .stageTitle {
+    font-size: 18px;
+  }
+  .flowCard {
+    padding: 18px 14px;
+    border-radius: 14px;
+  }
+  .flowCardTitle {
+    font-size: 16px;
+  }
+  .stageIconBox {
+    width: 42px;
+    height: 42px;
+  }
+  .stepPillsRow {
+    gap: 6px;
+  }
+  .stepPill {
+    font-size: 11.5px;
+    padding: 7px 10px;
+  }
+}
+
+/* 375px */
+@media (max-width: 375px) {
+  .flowSection {
+    padding: 40px 0;
+  }
+  .container {
+    padding: 0 12px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .subtitle {
+    font-size: 13.5px;
+  }
+  .stageHighlightCard {
+    padding: 16px 12px;
+    border-radius: 14px;
+  }
+  .stageTitle {
+    font-size: 16px;
+  }
+  .stageDesc {
+    font-size: 13px;
+  }
+  .flowCard {
+    padding: 16px 12px;
+    border-radius: 12px;
+  }
+  .flowCardTitle {
+    font-size: 15px;
+  }
+  .flowCardDesc {
+    font-size: 12.5px;
+  }
+  .stageIconBox {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+  .stepPill {
+    font-size: 11px;
+    padding: 6px 9px;
+    gap: 6px;
+  }
+  .badgeWrapper {
+    font-size: 10px;
+    letter-spacing: 0.8px;
+  }
+  .header {
+    margin-bottom: 24px;
+  }
+}
+
+/* 320px */
+@media (max-width: 320px) {
+  .flowSection {
+    padding: 32px 0;
+  }
+  .container {
+    padding: 0 10px;
+  }
+  .title {
+    font-size: 18px;
+  }
+  .subtitle {
+    font-size: 13px;
+  }
+  .stageHighlightCard {
+    padding: 14px 10px;
+  }
+  .stageTitle {
+    font-size: 15px;
+  }
+  .stageLeftHeader {
+    gap: 10px;
+  }
+  .stageIconBox {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+  .stageIconBox svg {
+    width: 20px;
+    height: 20px;
+  }
+  .flowCard {
+    padding: 14px 10px;
+    border-radius: 10px;
+  }
+  .flowCardTitle {
+    font-size: 14px;
+  }
+  .flowCardDesc {
+    font-size: 12px;
+  }
+  .stepPillsRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .stepPill {
+    justify-content: center;
+    font-size: 11px;
+    padding: 8px 12px;
+  }
+  .header {
+    margin-bottom: 20px;
+  }
+}
+

@@ -1,0 +1,263 @@
+.section {
+  padding: 100px 0;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width, 1440px);
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+@media (max-width: 992px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+.header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e65b3;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: #0c2340;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.divider {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #1e65b3, #38bdf8);
+  margin: 0 auto 20px auto;
+  border-radius: 2px;
+}
+
+.leadText {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.tabsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.tabBtn {
+  padding: 12px 24px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 0.92rem;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.tabBtn:hover {
+  background: #f1f5f9;
+  color: #0c2340;
+  border-color: #cbd5e1;
+}
+
+.activeTabBtn {
+  background: linear-gradient(135deg, #1e65b3 0%, #0c2340 100%) !important;
+  color: #ffffff !important;
+  border-color: #0c2340 !important;
+  box-shadow: 0 8px 20px rgba(30, 101, 179, 0.3);
+}
+
+.matrixBox {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 36px;
+  box-shadow: 0 15px 35px rgba(12, 35, 64, 0.06);
+}
+
+.matrixHeader {
+  margin-bottom: 28px;
+}
+
+.industryTag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1e65b3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.industryTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0c2340;
+  margin-top: 4px;
+}
+
+.gridColumns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 992px) {
+  .gridColumns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.colCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.colHeader {
+  padding: 14px 18px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.colHeader svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.colBody {
+  padding: 20px;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #334155;
+  flex-grow: 1;
+}
+
+.kpiBar {
+  background: #0c2340;
+  border-radius: 12px;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .kpiBar {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.kpiTitle {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+}
+
+.kpiValue {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+/* 📱 PRO MOBILE BREAKPOINTS: 425px, 375px, 320px 📱 */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+  .tabsWrapper {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tabsWrapper::-webkit-scrollbar {
+    display: none;
+  }
+  .tabBtn {
+    flex-shrink: 0;
+    padding: 10px 18px;
+    font-size: 0.84rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .container {
+    padding: 0 16px;
+  }
+  .matrixBox {
+    padding: 20px;
+    border-radius: 16px;
+  }
+  .industryTitle {
+    font-size: 1.3rem;
+  }
+  .colBody {
+    padding: 16px;
+    font-size: 0.88rem;
+  }
+  .kpiBar {
+    padding: 14px 18px;
+  }
+}
+
+@media (max-width: 375px) {
+  .container {
+    padding: 0 14px;
+  }
+  .matrixBox {
+    padding: 16px;
+  }
+  .industryTitle {
+    font-size: 1.2rem;
+  }
+  .tabBtn {
+    padding: 8px 14px;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 0 10px;
+  }
+  .matrixBox {
+    padding: 12px;
+  }
+  .industryTitle {
+    font-size: 1.1rem;
+  }
+}

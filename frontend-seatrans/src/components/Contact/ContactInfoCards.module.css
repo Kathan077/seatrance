@@ -1,0 +1,269 @@
+/* ============================================================
+   ContactInfoCards.module.css — Partner Contacts & Support Cards
+   ============================================================ */
+
+.sectionWrapper {
+  position: relative;
+  background: #ffffff;
+  padding: 30px 0 60px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.infoCard {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0 4px 20px rgba(12, 35, 64, 0.03);
+  transition: all 0.35s ease;
+}
+
+.infoCard:hover {
+  background: #ffffff;
+  border-color: rgba(30, 101, 179, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(12, 35, 64, 0.08);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.iconCircle {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: rgba(30, 101, 179, 0.08);
+  border: 1px solid rgba(30, 101, 179, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e65b3;
+  flex-shrink: 0;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.cardTag {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #1e65b3;
+  letter-spacing: 1.5px;
+}
+
+.cardTitle {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 20px;
+  font-weight: 800;
+  color: #0c2340;
+  margin: 0;
+}
+
+.dividerLine {
+  height: 1px;
+  background: #e2e8f0;
+  width: 100%;
+}
+
+/* Partner Boxes */
+.partnersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.partnerBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.partnerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.partnerName {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 18px;
+  font-weight: 800;
+  color: #0c2340;
+}
+
+.partnerRole {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1e65b3;
+  background: rgba(30, 101, 179, 0.08);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.contactLabel {
+  color: #64748b;
+  font-weight: 600;
+  width: 48px;
+}
+
+.contactLink {
+  color: #0c2340;
+  font-weight: 700;
+  transition: color 0.25s ease;
+}
+
+.contactLink:hover {
+  color: #1e65b3;
+}
+
+/* Hotline & Email */
+.hotlineSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.supportBox {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.subLabel {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 1px;
+}
+
+.mainLink {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 17px;
+  font-weight: 800;
+  color: #1e65b3;
+  transition: color 0.25s ease;
+  word-break: break-all;
+}
+
+.mainLinkPhone {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 24px;
+  font-weight: 850;
+  color: #0c2340;
+  transition: color 0.25s ease;
+}
+
+.mainLink:hover, .mainLinkPhone:hover {
+  color: #154e8c;
+}
+
+.subDesc {
+  font-size: 12.5px;
+  color: #64748b;
+}
+
+/* Hours */
+.hoursContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.hoursBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.daysBadge {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 14px;
+  font-weight: 800;
+  color: #0c2340;
+}
+
+.timeHighlight {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 18px;
+  font-weight: 850;
+  color: #1e65b3;
+  background: rgba(30, 101, 179, 0.08);
+  padding: 8px 16px;
+  border-radius: 12px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.hoursSubtext {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 6px 14px;
+  border-radius: 20px;
+  align-self: flex-start;
+}
+
+.greenDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+@media (max-width: 1100px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  .infoCard {
+    padding: 28px 20px;
+  }
+}

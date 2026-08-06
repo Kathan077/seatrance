@@ -57,7 +57,7 @@
   font-family: var(--font-outfit, 'Outfit', sans-serif);
   font-size: 13px;
   font-weight: 700;
-  color: #ff6f3c; /* brand accent */
+  color: #38bdf8; /* brand blue accent */
   letter-spacing: 3px;
   margin-bottom: 24px;
   text-transform: uppercase;
@@ -161,7 +161,7 @@
   display: block;
 }
 
-/* Responsive styles */
+/* ===================== RESPONSIVE ===================== */
 @media (max-width: 992px) {
   .container {
     padding: 0 24px;
@@ -201,5 +201,129 @@
   }
   .bottomSlantedDivider {
     height: 50px;
+  }
+}
+
+/* 425px */
+@media (max-width: 425px) {
+  .heroSection {
+    padding: 90px 0 70px 0;
+  }
+  .container {
+    padding: 0 16px;
+  }
+  .heroSubtitle {
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .heroTitle {
+    font-size: 36px;
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+  }
+  .heroDesc {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+  .primaryBtn,
+  .secondaryBtn {
+    font-size: 14px;
+    padding: 13px 28px;
+  }
+  .btnArrow {
+    width: 13px;
+    height: 13px;
+  }
+  .bottomSlantedDivider {
+    height: 44px;
+  }
+}
+
+/* 375px */
+@media (max-width: 375px) {
+  .heroSection {
+    padding: 80px 0 60px 0;
+  }
+  .container {
+    padding: 0 14px;
+  }
+  .heroSubtitle {
+    font-size: 10.5px;
+    letter-spacing: 1.8px;
+    margin-bottom: 14px;
+  }
+  .heroTitle {
+    font-size: 30px;
+    letter-spacing: -1px;
+    line-height: 1.12;
+    margin-bottom: 18px;
+  }
+  .heroDesc {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .heroContent {
+    margin-top: 0;
+  }
+  .primaryBtn,
+  .secondaryBtn {
+    font-size: 13.5px;
+    padding: 12px 24px;
+    border-radius: 40px;
+  }
+  .btnArrow {
+    width: 12px;
+    height: 12px;
+  }
+  .heroActions {
+    gap: 12px;
+  }
+  .bottomSlantedDivider {
+    height: 36px;
+  }
+}
+
+/* 320px */
+@media (max-width: 320px) {
+  .heroSection {
+    padding: 70px 0 50px 0;
+  }
+  .container {
+    padding: 0 12px;
+  }
+  .heroSubtitle {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+  .heroTitle {
+    font-size: 26px;
+    letter-spacing: -0.8px;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .heroDesc {
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+  .primaryBtn,
+  .secondaryBtn {
+    font-size: 13px;
+    padding: 11px 20px;
+    border-radius: 36px;
+  }
+  .btnArrow {
+    width: 14px;
+    height: 14px;
+  }
+  .heroActions {
+    gap: 10px;
+  }
+  .bottomSlantedDivider {
+    height: 30px;
   }
 }

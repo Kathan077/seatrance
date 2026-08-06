@@ -5,8 +5,11 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ServicesSection from "@/components/Services/ServicesSection";
-import WorkingProcess from "@/components/Services/Working_process";
-import ServicesShowcase from "@/components/Home/ServicesShowcase";
+import ServicesExpertise from "@/components/Services/ServicesExpertise";
+import ServicesFlow from "@/components/Services/ServicesFlow";
+import ServicesCapabilities from "@/components/Services/ServicesCapabilities";
+import ServicesFAQ from "@/components/Services/ServicesFAQ";
+
 import styles from "./services.module.css";
 
 if (typeof window !== "undefined") {
@@ -113,13 +116,21 @@ export default function ServicesPage() {
         <ServicesSection />
       </div>
 
-      {/* Working Process Section */}
-      <WorkingProcess />
+      {/* Pro-Level Our Expertise & Special Services Section */}
+      <ServicesExpertise />
 
-      {/* Standard Services Showcase Section */}
-      <ServicesShowcase />
+    
 
-      {/* FAQ & CTA Section can go here, but Navbar & Footer are rendered globally */}
+
+      {/* Pro-Level Compliance & Global Capabilities Section */}
+      <ServicesCapabilities />
+        {/* Pro-Level 6-Step End-to-End Execution Flow Section */}
+      <ServicesFlow />
+
+    
+
+      {/* Pro-Level FAQ & Consultation CTA Section */}
+      <ServicesFAQ />
     </main>
   );
 }

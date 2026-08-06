@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono, Outfit, Inter } from "next/font/google";
 import "./globals.css";
+import Preloader from "@/components/Preloader/Preloader";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import GlobalBackground from "@/components/GlobalBackground/GlobalBackground";
@@ -35,6 +36,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${outfit.variable} ${inter.variable}`}>
       <body>
+        <Preloader />
         <GlobalBackground />
         <Navbar />
         {children}

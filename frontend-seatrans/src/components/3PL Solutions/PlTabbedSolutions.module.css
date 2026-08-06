@@ -1,0 +1,233 @@
+/* ============================================================
+   PlTabbedSolutions.module.css — Tabbed 3PL Client Requirements
+   ============================================================ */
+
+.sectionWrapper {
+  position: relative;
+  background: #f4f7fa;
+  padding: 90px 0 110px;
+  color: #0c2340;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 800;
+  color: #0c2340;
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* Tabs Row Navigation */
+.tabsRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 0;
+  margin-left: 120px;
+}
+
+.tabBtn {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e3a8a;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-bottom: none;
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.tabBtn:hover {
+  background: #f8fafc;
+  color: #1e65b3;
+}
+
+/* Active Tab Styling - Connected to content box below */
+.activeTabBtn {
+  background: #ffffff !important;
+  color: #0c2340 !important;
+  font-weight: 800;
+  border-color: #cbd5e1 !important;
+  border-top: 3px solid #1e65b3 !important;
+  z-index: 3 !important;
+  margin-bottom: -1px;
+  padding-top: 13px;
+  box-shadow: 0 -4px 12px rgba(12, 35, 64, 0.03);
+}
+
+/* Content Box */
+.contentBox {
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 10px 35px rgba(12, 35, 64, 0.06);
+  padding: 48px 56px 52px;
+}
+
+/* Content Header */
+.contentHeader {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.contentTitle {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 22px;
+  font-weight: 800;
+  color: #0c2340;
+  margin-bottom: 6px;
+}
+
+.contentSubtitle {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 700;
+  color: #475569;
+}
+
+/* Grid Layout */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* Left Column */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.descText {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: #334155;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.connectBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #1e65b3 0%, #154e8c 100%);
+  color: #ffffff;
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 50px;
+  box-shadow: 0 10px 25px rgba(30, 101, 179, 0.3);
+  transition: all 0.35s ease;
+  border: 1px solid rgba(30, 101, 179, 0.2);
+}
+
+.connectBtn:hover {
+  background: linear-gradient(135deg, #2575d0 0%, #185aa2 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 35px rgba(30, 101, 179, 0.45);
+}
+
+/* Right Column */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bulletTitle {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 18px;
+  font-weight: 800;
+  color: #1e293b;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.bulletList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+}
+
+.bulletItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.checkIcon {
+  width: 18px;
+  height: 18px;
+  color: #1e3a8a;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .tabsRow {
+    margin-left: 0;
+    flex-wrap: wrap;
+  }
+  .tabBtn {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 12px 18px;
+    font-size: 13.5px;
+  }
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .contentBox {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sectionWrapper {
+    padding: 60px 0;
+  }
+  .container {
+    padding: 0 16px;
+  }
+  .tabsRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .tabBtn {
+    border-bottom: 1px solid #d1d5db;
+  }
+}

@@ -47,8 +47,8 @@
   position: relative;
   z-index: 1;
   
-  /* Angled edge slants right: top-left starts at 0px, bottom-left starts at 30px */
-  clip-path: polygon(0% 0%, calc(100% - 30px) 0%, 100% 100%, 30px 100%);
+  /* Angled trapezoid edges matching design mockup */
+  clip-path: polygon(25px 0%, calc(100% - 25px) 0%, 100% 100%, 0% 100%);
 }
 
 .scrolled .navbarBody {
@@ -88,8 +88,10 @@
 .desktopNav {
   display: flex;
   align-items: stretch;
+    
   gap: 36px;
   height: 100%;
+
   transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
@@ -97,6 +99,7 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  
 }
 
 .navLink {
@@ -109,9 +112,11 @@
   padding: 0;
   height: 100%;
   position: relative;
+
   transition: color var(--transition-fast);
   display: flex;
   align-items: center;
+
   gap: 4px;
 }
 
@@ -404,15 +409,15 @@
   font-weight: 700;
   font-size: 14px;
   padding: 0 40px 0 50px;
-  margin-left: -30px; /* Shifts the button left by slant width to join white block */
+  margin-left: -50px; /* Shifts the button left by slant width to join white block */
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(30, 101, 179, 0.25);
   z-index: 5;
   
-  /* Slanted left edge: top-left is 0px, bottom-left is 30px */
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 30px 100%);
+  /* Slanted left edge matching white body right slant */
+  clip-path: polygon(25px 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .ctaButton::before {
@@ -508,22 +513,76 @@
   top: 0;
   right: -100%;
   width: 320px;
+  max-width: 85vw;
   height: 100vh;
   background-color: #ffffff;
-  box-shadow: -10px 0 35px rgba(12, 35, 64, 0.15);
+  box-shadow: -10px 0 35px rgba(12, 35, 64, 0.18);
   z-index: 1005;
   transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 100px 32px 32px 32px;
+  padding: 0 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 .mobileDrawer.open {
   right: 0;
 }
 
+.mobileDrawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 16px 0;
+  border-bottom: 1px solid var(--border-light, #e2e8f0);
+  margin-bottom: 12px;
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  z-index: 10;
+}
+
+.mobileLogoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.mobileLogoImage {
+  width: 48px;
+  height: auto;
+  object-fit: contain;
+}
+
+.mobileCloseBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-navy, #0c2340);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.mobileCloseBtn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.mobileCloseBtn:hover {
+  background: var(--brand-navy, #0c2340);
+  color: #ffffff;
+  border-color: var(--brand-navy, #0c2340);
+  transform: rotate(90deg);
+}
+
 .mobileNav {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex-grow: 1;
 }
 
 .mobileNavLink {
@@ -533,7 +592,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--brand-navy);
-  padding: 10px 0;
+  padding: 12px 0;
   transition: color var(--transition-fast);
 }
 
@@ -566,7 +625,7 @@
 .mobileDividerLine {
   height: 1px;
   background-color: var(--border-light);
-  margin: 12px 0;
+  margin: 6px 0;
 }
 
 .mobileDrawerFooter {

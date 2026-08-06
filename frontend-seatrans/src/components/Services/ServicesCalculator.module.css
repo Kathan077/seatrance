@@ -1,0 +1,311 @@
+.calculatorSection {
+  position: relative;
+  background-color: #f8fafc;
+  padding: 100px 0;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.calcCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(12, 35, 64, 0.06);
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  overflow: hidden;
+}
+
+.calcLeft {
+  padding: 48px;
+}
+
+.calcBadge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+  background: rgba(30, 101, 179, 0.08);
+  color: #1e65b3;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  margin-bottom: 16px;
+}
+
+.calcTitle {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 32px;
+  font-weight: 800;
+  color: #0c2340;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.calcDesc {
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+/* Mode selector */
+.modeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.modeBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.modeBtn:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0c2340;
+}
+
+.modeBtn.activeMode {
+  background: #0c2340;
+  color: #ffffff;
+  border-color: #0c2340;
+  box-shadow: 0 6px 20px rgba(12, 35, 64, 0.2);
+}
+
+.modeIcon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Route */
+.routeGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.fieldBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0c2340;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.selectInput {
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
+  padding: 0 16px;
+  font-size: 14px;
+  color: #0c2340;
+  font-family: inherit;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.selectInput:focus {
+  border-color: #1e65b3;
+  box-shadow: 0 0 0 3px rgba(30, 101, 179, 0.12);
+}
+
+/* Sliders */
+.sliderGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sliderBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sliderLabelRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.sliderVal {
+  color: #1e65b3;
+  font-weight: 800;
+}
+
+.rangeSlider {
+  width: 100%;
+  accent-color: #1e65b3;
+  cursor: pointer;
+}
+
+/* Right Summary */
+.calcRight {
+  background: linear-gradient(135deg, #0c2340 0%, #06172e 100%);
+  padding: 48px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.summaryBox {
+  width: 100%;
+}
+
+.summaryBadge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #38bdf8;
+  background: rgba(14, 165, 233, 0.12);
+  padding: 4px 12px;
+  border-radius: 20px;
+
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin: 20px 0 6px 0;
+}
+
+.currency {
+  font-size: 28px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.priceVal {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 48px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.unit {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  margin-left: 6px;
+}
+
+.priceNotice {
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.dividerLine {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 24px;
+}
+
+.metaRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.metaLabel {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+.metaVal {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 4px;
+}
+
+.calcCtaBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #1e65b3 0%, #0ea5e9 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.3);
+  margin-bottom: 20px;
+}
+
+.calcCtaBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(14, 165, 233, 0.45);
+}
+
+.btnArrow {
+  width: 18px;
+  height: 18px;
+}
+
+.guaranteeRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.shieldIcon {
+  width: 16px;
+  height: 16px;
+  color: #10b981;
+}
+
+@media (max-width: 992px) {
+  .calcCard {
+    grid-template-columns: 1fr;
+  }
+  .routeGroup {
+    grid-template-columns: 1fr;
+  }
+}

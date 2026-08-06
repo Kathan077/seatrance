@@ -10,121 +10,166 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-function ServiceCard({ title, image, isHighlighted }) {
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+const serviceData = [
+  {
+    id: 1,
+    title: "Global Freight Shipping",
+    desc: "End-to-end ocean & air cargo solutions across 150+ trade lanes worldwide.",
+    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1200&auto=format&fit=crop",
+    tag: "Ocean & Air",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+        <path d="M3 12h4l3-9 4 18 3-9h4" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="12" cy="20" r="1" fill="currentColor"/>
+      </svg>
+    ),
+  },
+  {
+    id: 2,
+    title: "24/7 Logistics Assistance",
+    desc: "Round-the-clock support with real-time tracking and dedicated account managers.",
+    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=1200&auto=format&fit=crop",
+    tag: "Support",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: 3,
+    title: "Customs Clearance",
+    desc: "Expert compliance handling, HS code classification, and duty optimization.",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop",
+    tag: "Compliance",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+        <path d="M9 14l2 2 4-4"/>
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+    ),
+  },
+  {
+    id: 4,
+    title: "Agile Warehouse Facility",
+    desc: "Smart fulfillment centers with automated inventory and cross-dock capabilities.",
+    image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=1200&auto=format&fit=crop",
+    tag: "Warehousing",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+        <rect x="2" y="7" width="20" height="14" rx="2"/>
+        <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+        <line x1="12" y1="12" x2="12" y2="16"/>
+        <line x1="10" y1="14" x2="14" y2="14"/>
+      </svg>
+    ),
+  },
+  {
+    id: 5,
+    title: "Supply Chain Solutions",
+    desc: "Digitized end-to-end supply chain orchestration with predictive analytics.",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop",
+    tag: "Strategy",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+        <circle cx="18" cy="18" r="3"/>
+        <circle cx="6" cy="6" r="3"/>
+        <path d="M13 6h3a2 2 0 0 1 2 2v7"/>
+        <line x1="6" y1="9" x2="6" y2="21"/>
+      </svg>
+    ),
+  },
+  {
+    id: 6,
+    title: "Port Handling Services",
+    desc: "Priority berth allocation, stevedoring, and container yard management.",
+    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1200&auto=format&fit=crop",
+    tag: "Port Ops",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+        <path d="M2 20h20M12 4v16M8 8H4l2 8M16 8h4l-2 8"/>
+        <circle cx="12" cy="4" r="1" fill="currentColor"/>
+      </svg>
+    ),
+  },
+  {
+    id: 7,
+    title: "Cold Chain Logistics",
+    desc: "Temperature-controlled transport for pharma, fresh produce, and perishables.",
+    image: "https://images.unsplash.com/photo-1586528116224-f757457419e5?q=80&w=1200&auto=format&fit=crop",
+    tag: "Cold Chain",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+        <line x1="12" y1="2" x2="12" y2="22"/>
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+      </svg>
+    ),
+  },
+  {
+    id: 8,
+    title: "Road Freight & Express",
+    desc: "FTL/LTL trucking with GPS tracking across major domestic corridors.",
+    image: "https://images.unsplash.com/photo-1516576885502-d13d7af4e8b8?q=80&w=1200&auto=format&fit=crop",
+    tag: "Road",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+        <rect x="1" y="3" width="15" height="13" rx="2"/>
+        <path d="M16 8h4l3 4v4h-7V8z"/>
+        <circle cx="5.5" cy="18.5" r="2.5"/>
+        <circle cx="18.5" cy="18.5" r="2.5"/>
+      </svg>
+    ),
+  },
+];
+
+function ServiceCard({ title, desc, image, tag, icon, index }) {
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef(null);
-  
-  // Track actual width and height of the card dynamically to avoid SVG path scaling distortions
-  const [size, setSize] = useState({ width: 300, height: 400 });
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const card = cardRef.current;
-    if (!card) return;
-
-    const observer = new ResizeObserver((entries) => {
-      for (let entry of entries) {
-        const { width, height } = entry.contentRect;
-        setSize({ width, height });
-      }
-    });
-
-    observer.observe(card);
-    return () => observer.disconnect();
-  }, []);
-
-  const handleMouseMove = (e) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    
-    // Smooth 3D tilt
-    const maxTilt = 8;
-    const tiltX = -(y / (rect.height / 2)) * maxTilt;
-    const tiltY = (x / (rect.width / 2)) * maxTilt;
-    
-    setTilt({ x: tiltX, y: tiltY });
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setTilt({ x: 0, y: 0 });
-  };
-
-  const w = size.width;
-  const h = size.height;
 
   return (
-    <div 
+    <div
       ref={cardRef}
-      className={`${styles.card} ${isHighlighted ? styles.highlightedCard : ""}`}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        transform: isHovered 
-          ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale3d(1.03, 1.03, 1.03)` 
-          : 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
-        transition: isHovered ? 'none' : 'transform 0.6s cubic-bezier(0.25, 1, 0.3, 1)',
-      }}
+      className={`${styles.card} ${isHovered ? styles.cardHovered : ""}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Floating circular arrow button centered perfectly inside the curved notch */}
-      <div className={`${styles.circleBtn} ${isHighlighted ? styles.highlightedBtn : ""}`}>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className={styles.btnArrow}>
-          <path d="M7 17L17 7M7 7h10v10" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+      {/* Background Image */}
+      <div className={styles.cardImg}>
+        <Image
+          src={image}
+          alt={title}
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className={styles.cardBgImg}
+          unoptimized
+        />
       </div>
 
-      {/* SVG Background Path with perfect anti-aliased curved notch (non-deforming) */}
-      <div className={styles.cardBgContainer}>
-        <svg viewBox={`0 0 ${w} ${h}`} className={styles.cardBgSvg}>
-          <path 
-            className={styles.cardPath}
-            d={`M 24,0 
-               L ${w - 80},0 
-               C ${w - 50},0 ${w - 40},15 ${w - 40},40 
-               C ${w - 40},60 ${w},60 ${w},80 
-               L ${w},${h - 24} 
-               A 24,24 0 0,1 ${w - 24},${h} 
-               L 24,${h} 
-               A 24,24 0 0,1 0,${h - 24} 
-               L 0,24 
-               A 24,24 0 0,1 24,0 
-               Z`} 
-            fill={isHighlighted ? "#ff6f3c" : "#ffffff"} 
-            stroke={isHighlighted ? "#ff6f3c" : "rgba(12, 35, 64, 0.06)"} 
-            strokeWidth="1.5"
-            vectorEffect="non-scaling-stroke"
-          />
-        </svg>
+      {/* Gradient Overlay */}
+      <div className={styles.cardOverlay} />
+
+      {/* Tag pill */}
+      <div className={styles.cardTag}>{tag}</div>
+
+      {/* Icon */}
+      <div className={styles.cardIcon}>{icon}</div>
+
+      {/* Bottom Content */}
+      <div className={styles.cardBody}>
+        <h3 className={styles.cardTitle}>{title}</h3>
+        <p className={styles.cardDesc}>{desc}</p>
+        <div className={styles.cardCta}>
+          <span>Learn More</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" className={styles.ctaArrow}>
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </div>
       </div>
 
-      {/* Card Content Overlay */}
-      <div className={styles.cardContent}>
-        <div className={styles.cardHeaderArea}>
-          <h3 className={styles.cardTitle}>{title}</h3>
-        </div>
-        
-        {/* Slanted Image container */}
-        <div className={styles.cardImageWrapper}>
-          <Image 
-            src={image} 
-            alt={title}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-            className={styles.cardImage}
-            unoptimized
-          />
-          <div className={styles.imageOverlay} />
-        </div>
-      </div>
+      {/* Hover shimmer line */}
+      <div className={styles.shimmerLine} />
     </div>
   );
 }
@@ -133,44 +178,74 @@ export default function ServicesSection() {
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
   const gridRef = useRef(null);
+  const counterRef = useRef(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     const ctx = gsap.context(() => {
-      // Header Animation
-      gsap.fromTo(headerRef.current,
-        { opacity: 0, y: 40 },
+      // Header stagger animation
+      gsap.fromTo(
+        headerRef.current.children,
+        { opacity: 0, y: 50 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          ease: "power3.out",
+          stagger: 0.12,
+          duration: 0.9,
+          ease: "power4.out",
           scrollTrigger: {
             trigger: headerRef.current,
             start: "top 85%",
-            toggleActions: "play none none none"
-          }
+            toggleActions: "play none none none",
+          },
         }
       );
 
-      // Grid Cards Stagger Reveal
+      // Counter animation
+      if (counterRef.current) {
+        const counters = counterRef.current.querySelectorAll("[data-count]");
+        counters.forEach((el) => {
+          const target = parseInt(el.getAttribute("data-count"));
+          gsap.fromTo(
+            el,
+            { textContent: 0 },
+            {
+              textContent: target,
+              duration: 2,
+              ease: "power2.out",
+              snap: { textContent: 1 },
+              scrollTrigger: {
+                trigger: counterRef.current,
+                start: "top 85%",
+                toggleActions: "play none none none",
+              },
+              onUpdate: function () {
+                el.textContent = Math.ceil(this.targets()[0].textContent) + (el.dataset.suffix || "");
+              },
+            }
+          );
+        });
+      }
+
+      // Cards stagger reveal
       const cards = gridRef.current?.children;
       if (cards) {
-        gsap.fromTo(Array.from(cards),
-          { opacity: 0, y: 60, rotationY: -10, transformPerspective: 1000 },
+        gsap.fromTo(
+          Array.from(cards),
+          { opacity: 0, y: 70, scale: 0.94 },
           {
             opacity: 1,
             y: 0,
-            rotationY: 0,
-            stagger: 0.18,
-            duration: 1.0,
+            scale: 1,
+            stagger: 0.09,
+            duration: 0.85,
             ease: "power3.out",
             scrollTrigger: {
               trigger: gridRef.current,
               start: "top 80%",
-              toggleActions: "play none none none"
-            }
+              toggleActions: "play none none none",
+            },
           }
         );
       }
@@ -179,79 +254,36 @@ export default function ServicesSection() {
     return () => ctx.revert();
   }, []);
 
-  const serviceData = [
-    {
-      title: "Global Freight Shipping",
-      image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&auto=format&fit=crop",
-      isHighlighted: false
-    },
-    {
-      title: "24/7 Logistics Assistance",
-      image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=800&auto=format&fit=crop",
-      isHighlighted: false
-    },
-    {
-      title: "Customs Clearance Support",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop",
-      isHighlighted: false
-    },
-    {
-      title: "Agile warehouse Facility",
-      image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=800&auto=format&fit=crop",
-      isHighlighted: false
-    },
-    {
-      title: "Supply Chain Solutions",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop",
-      isHighlighted: false
-    },
-    {
-      title: "Port Handling Services",
-      image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&auto=format&fit=crop",
-      isHighlighted: false
-    },
-    {
-      title: "Cold Chain Logistics",
-      image: "https://images.unsplash.com/photo-1586528116224-f757457419e5?q=80&w=800&auto=format&fit=crop",
-      isHighlighted: false
-    },
-    {
-      title: "Road Freight & Express",
-      image: "https://images.unsplash.com/photo-1516576885502-d13d7af4e8b8?q=80&w=800&auto=format&fit=crop",
-      isHighlighted: false
-    }
-  ];
-
   return (
     <section ref={sectionRef} className={styles.servicesSection}>
+      {/* Ambient background orbs */}
+      <div className={styles.orbTop} />
+      <div className={styles.orbBottom} />
+
       <div className={styles.container}>
-        
         {/* Section Header */}
         <div ref={headerRef} className={styles.sectionHeader}>
-          <span className={styles.badge}>
-            <svg viewBox="0 0 24 24" fill="currentColor" className={styles.badgeIcon}>
-              <path d="M12 2l2.4 7.4h7.6l-6.2 4.5 2.4 7.4-6.2-4.5-6.2 4.5 2.4-7.4-6.2-4.5h7.6z" />
-            </svg>
-            Services
-          </span>
+          <div className={styles.badge}>
+            <span className={styles.badgeDot} />
+            Our Services
+          </div>
           <h2 className={styles.sectionTitle}>
-            Comprehensive Logistics and <br />
-            Supply Chain Solutions
+            Comprehensive Logistics &<br />
+            <span className={styles.titleAccent}>Supply Chain Solutions</span>
           </h2>
+          <p className={styles.sectionSubtext}>
+            From first mile to last mile — Seatrans delivers intelligent, resilient, and digitized freight solutions across every trade lane.
+          </p>
         </div>
+
+      
 
         {/* Services Grid */}
         <div ref={gridRef} className={styles.grid}>
-          {serviceData.map((svc, index) => (
-            <ServiceCard 
-              key={index}
-              title={svc.title}
-              image={svc.image}
-              isHighlighted={svc.isHighlighted}
-            />
+          {serviceData.map((svc, i) => (
+            <ServiceCard key={svc.id} {...svc} index={i} />
           ))}
         </div>
-
       </div>
     </section>
   );

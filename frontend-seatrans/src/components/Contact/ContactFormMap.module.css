@@ -1,0 +1,311 @@
+/* ============================================================
+   ContactFormMap.module.css — Form & Map Styling
+   ============================================================ */
+
+.sectionWrapper {
+  position: relative;
+  background: #f8fafc;
+  padding: 80px 0 130px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 36px;
+  align-items: stretch;
+}
+
+/* Form Card */
+.formCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 28px;
+  padding: 48px;
+  box-shadow: 0 10px 35px rgba(12, 35, 64, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.formHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.badge {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  color: #1e65b3;
+  letter-spacing: 1.5px;
+}
+
+.formTitle {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 26px;
+  font-weight: 850;
+  color: #0c2340;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.formDesc {
+  font-size: 14.5px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rowTwo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0c2340;
+}
+
+.input, .select, .textarea {
+  width: 100%;
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 13px 18px;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  color: #0c2340;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input:focus, .select:focus, .textarea:focus {
+  background: #ffffff;
+  border-color: #1e65b3;
+  box-shadow: 0 0 0 3px rgba(30, 101, 179, 0.12);
+}
+
+.select {
+  cursor: pointer;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #1e65b3 0%, #154e8c 100%);
+  color: #ffffff;
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(30, 101, 179, 0.3);
+  transition: all 0.35s ease;
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+.submitBtn:hover {
+  background: linear-gradient(135deg, #2575d0 0%, #185aa2 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 35px rgba(30, 101, 179, 0.45);
+}
+
+.btnArrow {
+  width: 18px;
+  height: 18px;
+}
+
+.successBox {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 18px;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.successIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #10b981;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successTitle {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 22px;
+  font-weight: 800;
+  color: #0c2340;
+}
+
+.successText {
+  font-size: 14.5px;
+  color: #334155;
+  line-height: 1.6;
+}
+
+/* Map Card */
+.mapCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 10px 35px rgba(12, 35, 64, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.officeHeader {
+  padding: 36px 36px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #ffffff;
+}
+
+.officeBadge {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #1e65b3;
+  letter-spacing: 1.5px;
+}
+
+.officeTitle {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 24px;
+  font-weight: 850;
+  color: #0c2340;
+  margin: 0;
+}
+
+.addressBox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 16px 20px;
+  border-radius: 16px;
+}
+
+.locationIcon {
+  width: 22px;
+  height: 22px;
+  color: #1e65b3;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.addressText {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.addressText strong {
+  color: #0c2340;
+}
+
+.mapLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1e65b3;
+  background: rgba(30, 101, 179, 0.08);
+  border: 1px solid rgba(30, 101, 179, 0.2);
+  padding: 10px 20px;
+  border-radius: 30px;
+  align-self: flex-start;
+  transition: all 0.3s ease;
+}
+
+.mapLinkBtn:hover {
+  background: #1e65b3;
+  color: #ffffff;
+  border-color: #1e65b3;
+}
+
+.linkIcon {
+  width: 15px;
+  height: 15px;
+}
+
+.iframeWrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  flex: 1;
+}
+
+.mapIframe {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  .formCard, .officeHeader {
+    padding: 28px 20px;
+  }
+  .rowTwo {
+    grid-template-columns: 1fr;
+  }
+}

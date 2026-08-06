@@ -30,7 +30,6 @@ export default function AboutPage() {
   const faqSectionRef = useRef(null);
   const partnersSectionRef = useRef(null);
   const ctaSectionRef = useRef(null);
-  const metricsSectionRef = useRef(null);
   const testimonialsSectionRef = useRef(null);
   const servicesSectionRef = useRef(null);
 
@@ -293,16 +292,6 @@ export default function AboutPage() {
         );
       }
 
-      // 11. Metrics strip counter reveal
-      const metricItems = metricsSectionRef.current?.querySelectorAll(`.${styles.metricItem}`);
-      if (metricItems) {
-        gsap.fromTo(Array.from(metricItems),
-          { opacity: 0, y: 40, scale: 0.94 },
-          { opacity: 1, y: 0, scale: 1, stagger: 0.12, duration: 0.9, ease: "back.out(1.5)",
-            scrollTrigger: { trigger: metricsSectionRef.current, start: "top 85%" }
-          }
-        );
-      }
 
       // 12. Testimonials reveal
       const testimonialCards = testimonialsSectionRef.current?.querySelectorAll(`.${styles.testimonialCard}`);
@@ -382,52 +371,12 @@ export default function AboutPage() {
                 functional best practices and frictionless.
               </p>
 
-              <div ref={teamRef} className={styles.teamInlineRow}>
-                <div className={styles.avatarGroup}>
-                  <div className={styles.avatar}>
-                    <Image
-                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=80&auto=format&fit=crop"
-                      alt="Team Member"
-                      width={38}
-                      height={38}
-                      unoptimized
-                    />
-                  </div>
-                  <div className={styles.avatar}>
-                    <Image
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=80&auto=format&fit=crop"
-                      alt="Team Member"
-                      width={38}
-                      height={38}
-                      unoptimized
-                    />
-                  </div>
-                  <div className={styles.avatar}>
-                    <Image
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=80&auto=format&fit=crop"
-                      alt="Team Member"
-                      width={38}
-                      height={38}
-                      unoptimized
-                    />
-                  </div>
-                </div>
-                <div className={styles.teamText}>
-                  <span className={styles.teamHighlight}>100+ High Professional</span> Team Members
-                </div>
-              </div>
+            
               
-              <div ref={btnRef} className={styles.btnWrapper}>
-                <Link href="#contact" className={styles.moreBtn}>
-                  More About Us
-                  <div className={styles.btnCircle}>
-                    <svg viewBox="0 0 24 24" fill="currentColor" className={styles.planeIcon}>
-                      <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-                    </svg>
-                  </div>
-                </Link>
+                
+         
+              
               </div>
-            </div>
 
             {/* RIGHT COLUMN: Cargo Truck */}
             <div ref={rightImageRef} className={styles.rightImageCol}>
@@ -907,80 +856,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── SECTION: Animated Metrics Strip ── */}
-      <section ref={metricsSectionRef} className={styles.metricsSection}>
-        <div className={styles.container}>
-          <div className={styles.metricsGrid}>
-
-            <div className={styles.metricItem}>
-              <div className={styles.metricIconBox}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.metricIcon}>
-                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                </svg>
-              </div>
-              <span className={styles.metricValue}>99.4<span className={styles.metricSup}>%</span></span>
-              <span className={styles.metricLabel}>On-Time Delivery</span>
-            </div>
-
-            <div className={styles.metricDivider} />
-
-            <div className={styles.metricItem}>
-              <div className={styles.metricIconBox}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.metricIcon}>
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="2" y1="12" x2="22" y2="12"/>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                </svg>
-              </div>
-              <span className={styles.metricValue}>180<span className={styles.metricSup}>+</span></span>
-              <span className={styles.metricLabel}>Global Ports</span>
-            </div>
-
-            <div className={styles.metricDivider} />
-
-            <div className={styles.metricItem}>
-              <div className={styles.metricIconBox}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.metricIcon}>
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                </svg>
-              </div>
-              <span className={styles.metricValue}>1,200<span className={styles.metricSup}>+</span></span>
-              <span className={styles.metricLabel}>Enterprise Clients</span>
-            </div>
-
-            <div className={styles.metricDivider} />
-
-            <div className={styles.metricItem}>
-              <div className={styles.metricIconBox}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.metricIcon}>
-                  <rect x="1" y="3" width="15" height="13" rx="2"/>
-                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
-                  <circle cx="5.5" cy="18.5" r="2.5"/>
-                  <circle cx="18.5" cy="18.5" r="2.5"/>
-                </svg>
-              </div>
-              <span className={styles.metricValue}>16K<span className={styles.metricSup}>+</span></span>
-              <span className={styles.metricLabel}>Shipments Completed</span>
-            </div>
-
-            <div className={styles.metricDivider} />
-
-            <div className={styles.metricItem}>
-              <div className={styles.metricIconBox}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.metricIcon}>
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                </svg>
-              </div>
-              <span className={styles.metricValue}>4.9<span className={styles.metricSup}>★</span></span>
-              <span className={styles.metricLabel}>Average Rating</span>
-            </div>
-
-          </div>
-        </div>
-      </section>
 
     </main>
   );

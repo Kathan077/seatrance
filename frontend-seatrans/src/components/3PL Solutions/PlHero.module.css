@@ -1,0 +1,317 @@
+/* ============================================================
+   PlHero.module.css — Clean & Bright Pro-Level 3PL Hero
+   ============================================================ */
+
+.heroWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffffff 0%, #f4f8fa 100%);
+  padding: 160px 0 120px;
+  overflow: hidden;
+  color: #0c2340;
+}
+
+/* Subtle ambient radial glows for light mode */
+.ambientGlow1 {
+  position: absolute;
+  top: -200px;
+  right: -100px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(30, 101, 179, 0.08) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ambientGlow2 {
+  position: absolute;
+  bottom: -200px;
+  left: -150px;
+  width: 750px;
+  height: 750px;
+  background: radial-gradient(circle, rgba(30, 101, 179, 0.05) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heroBg {
+  display: none;
+}
+
+.heroOverlay {
+  display: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+  z-index: 2;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(30, 101, 179, 0.08);
+  border: 1px solid rgba(30, 101, 179, 0.2);
+  padding: 7px 22px;
+  border-radius: 50px;
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  margin-bottom: 26px;
+  color: #1e65b3;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+  animation: pulseGreen 2s infinite ease-in-out;
+}
+
+@keyframes pulseGreen {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.3); }
+}
+
+.badgeText {
+  color: #1e65b3;
+}
+
+.badgeDivider {
+  color: rgba(30, 101, 179, 0.3);
+}
+
+.badgeHighlight {
+  color: #0c2340;
+  font-weight: 800;
+}
+
+/* Hero Title */
+.heroTitle {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: clamp(34px, 4.4vw, 60px);
+  font-weight: 850;
+  line-height: 1.18;
+  letter-spacing: -1.8px;
+  color: #0c2340;
+  margin-bottom: 22px;
+}
+
+.blueGradient {
+  color: #1e65b3;
+}
+
+/* Description */
+.heroDesc {
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.7;
+  color: #475569;
+  max-width: 780px;
+  margin-bottom: 38px;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #1e65b3 0%, #154e8c 100%);
+  color: #ffffff;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 10px 30px rgba(30, 101, 179, 0.3);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.3, 1);
+  border: 1px solid rgba(30, 101, 179, 0.2);
+}
+
+.primaryBtn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(30, 101, 179, 0.45);
+  background: linear-gradient(135deg, #2575d0 0%, #185aa2 100%);
+}
+
+.btnArrow {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.primaryBtn:hover .btnArrow {
+  transform: translateX(5px);
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #0c2340;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  border: 1.5px solid #cbd5e1;
+  box-shadow: 0 4px 14px rgba(12, 35, 64, 0.04);
+  transition: all 0.35s ease;
+}
+
+.secondaryBtn:hover {
+  background: #f8fafc;
+  border-color: #1e65b3;
+  color: #1e65b3;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(30, 101, 179, 0.12);
+}
+
+.btnIcon {
+  width: 18px;
+  height: 18px;
+  color: #1e65b3;
+}
+
+/* Metrics Grid - Clean White Cards */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.metricCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 30px rgba(12, 35, 64, 0.05);
+}
+
+.metricCard:hover {
+  background: #ffffff;
+  border-color: rgba(30, 101, 179, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(30, 101, 179, 0.12);
+}
+
+.metricHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.metricNumber {
+  font-family: var(--font-outfit, 'Outfit', sans-serif);
+  font-size: clamp(24px, 2.2vw, 32px);
+  font-weight: 850;
+  color: #0c2340;
+  letter-spacing: -0.5px;
+}
+
+.metricBadge {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #1e65b3;
+  background: rgba(30, 101, 179, 0.08);
+  border: 1px solid rgba(30, 101, 179, 0.2);
+  padding: 3px 10px;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.metricLabel {
+  font-size: 13.5px;
+  color: #64748b;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* Slanted Divider */
+.bottomSlantedDivider {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroWrapper {
+    padding: 130px 0 90px;
+    min-height: auto;
+  }
+  .container {
+    padding: 0 20px;
+  }
+  .heroTitle {
+    font-size: 32px;
+  }
+  .heroDesc {
+    font-size: 15px;
+  }
+  .badge {
+    font-size: 10px;
+    padding: 6px 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .badgeDivider {
+    display: none;
+  }
+  .heroActions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .primaryBtn, .secondaryBtn {
+    width: 100%;
+    justify-content: center;
+  }
+  .metricsGrid {
+    grid-template-columns: 1fr;
+  }
+}
