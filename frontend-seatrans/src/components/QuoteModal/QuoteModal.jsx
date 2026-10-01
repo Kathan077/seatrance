@@ -121,6 +121,7 @@ export default function QuoteModal({ isOpen, onClose }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [quoteId, setQuoteId] = useState("");
+  const [apiError, setApiError] = useState("");
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -196,16 +197,57 @@ export default function QuoteModal({ isOpen, onClose }) {
     if (currentStep > 1) setCurrentStep((prev) => prev - 1);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateStep3()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
+    setApiError("");
+
+    const generatedId = `ST-QUOTE-${Math.floor(100000 + Math.random() * 900000)}`;
+    const apiKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "17ba1585-64d5-44c9-aa78-c2516a2bb132";
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: apiKey,
+          subject: `New Pro Quote Request [${generatedId}] from ${formData.name}`,
+          from_name: "Seatrans Pro Quote Desk",
+          quote_reference: generatedId,
+          service_selected: activeServiceObj?.name || selectedService,
+          name: formData.name,
+          company: formData.company,
+          email: formData.email,
+          phone: formData.phone,
+          origin: formData.origin,
+          destination: formData.destination,
+          incoterm: formData.incoterm,
+          container_equipment_type: formData.containerType,
+          weight: formData.weight || "N/A",
+          volume: formData.volume || "N/A",
+          special_handling: formData.specialHandling.length > 0 ? formData.specialHandling.join(", ") : "None",
+          project_notes: formData.message || "N/A"
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setQuoteId(generatedId);
+        setIsSubmitted(true);
+      } else {
+        setApiError(data.message || "Failed to submit quote request. Please try again.");
+      }
+    } catch (err) {
+      setApiError("Failed to submit request due to a network error. Please try again.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      setQuoteId(`ST-QUOTE-${Math.floor(100000 + Math.random() * 900000)}`);
-    }, 1200);
+    }
   };
 
   const resetModal = () => {
@@ -559,6 +601,12 @@ export default function QuoteModal({ isOpen, onClose }) {
                     />
                   </div>
                 </div>
+
+                {apiError && (
+                  <div style={{ color: "#ef4444", fontSize: "14px", fontWeight: "600", padding: "10px 14px", background: "#fef2f2", borderRadius: "8px", border: "1px solid #fecaca", margin: "12px 0" }}>
+                    ⚠️ {apiError}
+                  </div>
+                )}
 
                 <div className={styles.stepFooter}>
                   <button type="button" onClick={handlePrev} className={styles.prevBtn}>

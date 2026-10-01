@@ -18,6 +18,7 @@ export default function QuoteSection() {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [apiError, setApiError] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -51,27 +52,59 @@ export default function QuoteSection() {
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    
-    // Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({
-        name: "",
-        phone: "",
-        email: "",
-        freightType: "",
-        origin: "",
-        destination: "",
-        weight: "",
-        message: "",
+    setApiError("");
+
+    const apiKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "17ba1585-64d5-44c9-aa78-c2516a2bb132";
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: apiKey,
+          subject: `New Rate Sheet Request from ${formData.name}`,
+          from_name: "Seatrans Quote Desk",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          freight_type: formData.freightType,
+          origin: formData.origin,
+          destination: formData.destination,
+          weight_cargo_info: formData.weight || "N/A",
+          additional_details: formData.message || "N/A"
+        })
       });
-    }, 1500);
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          freightType: "",
+          origin: "",
+          destination: "",
+          weight: "",
+          message: "",
+        });
+      } else {
+        setApiError(data.message || "Form submission failed. Please try again.");
+      }
+    } catch (err) {
+      setApiError("Failed to submit request due to network issue. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -255,6 +288,12 @@ export default function QuoteSection() {
                       />
                     </div>
                   </div>
+
+                  {apiError && (
+                    <div style={{ color: "#ef4444", fontSize: "14px", fontWeight: "600", padding: "10px 14px", background: "#fef2f2", borderRadius: "8px", border: "1px solid #fecaca", marginTop: "12px" }}>
+                      ⚠️ {apiError}
+                    </div>
+                  )}
 
                   <button
                     type="submit"

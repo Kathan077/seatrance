@@ -16,23 +16,50 @@ export default function ContactFormMap() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        company: "",
-        service: "Ocean Freight",
-        origin: "",
-        destination: "",
-        message: "",
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const apiKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "17ba1585-64d5-44c9-aa78-c2516a2bb132";
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: apiKey,
+          subject: `New Rate Card / Consultation Request from ${formData.fullName}`,
+          from_name: "Seatrans Contact Form",
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company || "N/A",
+          service_required: formData.service,
+          origin_port_city: formData.origin || "N/A",
+          destination_port_city: formData.destination || "N/A",
+          message_cargo_specs: formData.message || "N/A"
+        })
       });
-    }, 4000);
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMessage(data.message || "An error occurred during submission. Please try again.");
+      }
+    } catch (err) {
+      setErrorMessage("Failed to send message due to a network error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -161,8 +188,14 @@ export default function ContactFormMap() {
                   />
                 </div>
 
-                <button type="submit" className={styles.submitBtn}>
-                  <span>Submit Inquiry</span>
+                {errorMessage && (
+                  <div style={{ color: "#ef4444", fontSize: "14px", fontWeight: "600", padding: "8px 12px", background: "#fef2f2", borderRadius: "8px", border: "1px solid #fecaca" }}>
+                    ⚠️ {errorMessage}
+                  </div>
+                )}
+
+                <button type="submit" disabled={isSubmitting} className={styles.submitBtn}>
+                  <span>{isSubmitting ? "Submitting..." : "Submit Inquiry"}</span>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className={styles.btnArrow}>
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
