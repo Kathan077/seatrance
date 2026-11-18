@@ -145,15 +145,17 @@ export default function Footer() {
           <div className={styles.copyright}>
             &copy; {currentYear} Seatrans Shipping & Logistics. All rights reserved.
           </div>
-          <div className={styles.legalLinks}>
-            <Link href="/" className={styles.legalLink}>Privacy Policy</Link>
-            <span className={styles.legalDivider}>•</span>
-            <Link href="/" className={styles.legalLink}>Terms of Service</Link>
-            <span className={styles.legalDivider}>•</span>
-            <Link href="/" className={styles.legalLink}>Cookie Policy</Link>
-          </div>
+         
           <div className={styles.credits}>
-            Designed & Developed by <span className={styles.creditTeam}>Seatrans Tech</span>
+            Designed & Developed by{" "}
+            <a
+              href="https://sanmora.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.creditTeam}
+            >
+              sanmora.in
+            </a>
           </div>
         </div>
       </div>
