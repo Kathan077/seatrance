@@ -114,9 +114,12 @@ export default function Footer() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={styles.contactIcon}>
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
-                <a href="tel:+919898697515" className={styles.contactLink}>
-                  +91 98986 97515
-                </a>
+                <div className={styles.contactPhoneGroup}>
+                  <a href="tel:+919898697515" className={styles.contactLink}>
+                    +91 98986 97515
+                  </a>
+                  <span className={styles.contactSubText}>(Hotline)</span>
+                </div>
               </li>
               <li className={styles.contactItem}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={styles.contactIcon}>
@@ -137,6 +140,23 @@ export default function Footer() {
                 </span>
               </li>
             </ul>
+
+            {/* PARTNER LEADERSHIP CONTACTS */}
+            <div className={styles.partnersBox}>
+              <span className={styles.partnersHeading}>Key Contacts (Partners):</span>
+              <div className={styles.partnerItem}>
+                <span className={styles.partnerName}>Kandarp:</span>
+                <a href="tel:+919106202999" className={styles.partnerLink}>+91 91062 02999</a>
+                <span className={styles.partnerDot}>•</span>
+                <a href="mailto:kandarp@seatransshipping.net" className={styles.partnerLink}>kandarp@seatransshipping.net</a>
+              </div>
+              <div className={styles.partnerItem}>
+                <span className={styles.partnerName}>Lakshay:</span>
+                <a href="tel:+919898587515" className={styles.partnerLink}>+91 98985 87515</a>
+                <span className={styles.partnerDot}>•</span>
+                <a href="mailto:lakshay@seatransshipping.net" className={styles.partnerLink}>lakshay@seatransshipping.net</a>
+              </div>
+            </div>
           </div>
         </div>
 

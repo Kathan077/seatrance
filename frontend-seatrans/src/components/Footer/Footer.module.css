@@ -356,6 +356,71 @@
   text-decoration: underline;
 }
 
+.contactPhoneGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.contactSubText {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Key Contacts / Partners Box */
+.partnersBox {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.partnersHeading {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--brand-blue-light);
+  margin-bottom: 2px;
+}
+
+.partnerItem {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.4;
+}
+
+.partnerName {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.partnerLink {
+  color: rgba(255, 255, 255, 0.65);
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.partnerLink:hover {
+  color: var(--brand-blue-light);
+  text-decoration: underline;
+}
+
+.partnerDot {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 10px;
+}
+
 /* ── BOTTOM BAR ── */
 .bottomBar {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
