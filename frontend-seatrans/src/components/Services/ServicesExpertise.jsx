@@ -253,7 +253,7 @@ export default function ServicesExpertise() {
                     <polyline points="12 5 19 12 12 19" />
                   </svg>
                 </Link>
-                <a href="tel:+912212345678" className={styles.secondaryCtaBtn}>
+                <a href="tel:+919898697515" className={styles.secondaryCtaBtn}>
                   <span>Speak with Expert</span>
                 </a>
               </div>

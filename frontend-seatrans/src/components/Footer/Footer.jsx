@@ -107,15 +107,15 @@ export default function Footer() {
                   <circle cx="12" cy="10" r="3" />
                 </svg>
                 <span className={styles.contactText}>
-                  Corporate Office, Gandhidham, Kutch, Gujarat - 370201, India
+                  419, North Plaza, Motera, Ahmedabad - 380005, Gujarat, India
                 </span>
               </li>
               <li className={styles.contactItem}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={styles.contactIcon}>
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
-                <a href="tel:+919999988888" className={styles.contactLink}>
-                  +91 99999 88888
+                <a href="tel:+919898697515" className={styles.contactLink}>
+                  +91 98986 97515
                 </a>
               </li>
               <li className={styles.contactItem}>
@@ -123,8 +123,8 @@ export default function Footer() {
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
-                <a href="mailto:ops@seatrans.in" className={styles.contactLink}>
-                  ops@seatrans.in
+                <a href="mailto:Info@seatransshipping.net" className={styles.contactLink}>
+                  Info@seatransshipping.net
                 </a>
               </li>
               <li className={styles.contactItem}>
@@ -133,7 +133,7 @@ export default function Footer() {
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
                 <span className={styles.contactText}>
-                  Mon - Sat: 9:30 AM - 6:30 PM
+                  Mon - Sat: 09:30 AM - 06:30 PM (IST)
                 </span>
               </li>
             </ul>
